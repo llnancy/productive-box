@@ -1,0 +1,17 @@
+name: Update gist
+on:
+  repository_dispatch:
+    types: [build-event]
+  schedule:
+    - cron: "0 0 * * *"
+jobs:
+  update-gist:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Update gist
+        uses: sunchaser-lilu/productive-box@master
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          PRODUCTIVE_GIST_ID: f5eada56197da823b4cac1050a267745
+          TIMEZONE: Asia/Shanghai
